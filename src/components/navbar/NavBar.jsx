@@ -1,4 +1,7 @@
 import React from "react";
+import Boton from "../boton/Boton";
+import CartWidget from "./CartWidget";
+
 const NavBar = function(){
 return (
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -10,18 +13,19 @@ return (
     <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul className="navbar-nav">
             <li className="nav-item active mx-3">
-                <button className="btn btn-outline-light">Home</button>
+                <Boton label='inicio' />
             </li>
             <li className="nav-item mx-3">
-                <button className="btn btn-outline-light">Features</button>
+                <Boton label='nosotros' />
             </li>
             <li className="nav-item mx-3">
-                <button className="btn btn-outline-light">Pricing</button>
+                <Boton label='productos' />
             </li>
             <li className="nav-item mx-3">
-                <button className="btn btn-outline-light">Disabled</button>
+                <Boton label='contacto' />
             </li>
         </ul>
+        <CartWidget />
     </div>
     </div>
     

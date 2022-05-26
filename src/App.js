@@ -8,9 +8,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <ItemListContainer title="Tienda" />
-      <ItemListContainer title="Adicta" />
-      <ItemListContainer title="Todo para Damas" />
+      <ItemListContainer title="Tienda Adicta" />
     </div>
   );
 }
