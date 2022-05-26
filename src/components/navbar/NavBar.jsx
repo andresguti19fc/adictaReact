@@ -16,13 +16,13 @@ return (
                 <Boton label='inicio' />
             </li>
             <li className="nav-item mx-3">
-                <Boton label='nosotros' />
+                <Boton label='Mujeres' />
             </li>
             <li className="nav-item mx-3">
-                <Boton label='productos' />
+                <Boton label='Hombres' />
             </li>
             <li className="nav-item mx-3">
-                <Boton label='contacto' />
+                <Boton label='niños' />
             </li>
         </ul>
         <CartWidget />
