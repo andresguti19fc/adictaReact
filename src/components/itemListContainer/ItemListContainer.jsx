@@ -1,6 +1,6 @@
 import React from "react";
 import ItemList from "../itemList/ItemList.js";
-import { getBbdd } from "../../asyncMock";
+import { getBbdd } from "../../mock/asyncMock";
 import { useEffect, useState } from "react";
 
 const ItemListContainer = function ({ title }) {
