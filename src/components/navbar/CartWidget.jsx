@@ -1,9 +1,11 @@
 import Boton from "../boton/Boton";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import './CartWidget.css';
+
 const CartWidget = () => {
     return (
-        <Boton label={<FontAwesomeIcon icon={faCartShopping} /> } span={<span style={{color: 'red'}}>0</span>} />
+        <Boton classButton='btn btn-outline-light' label={<FontAwesomeIcon icon={faCartShopping} /> } span={<span> 0</span>} />
     );
 }
 

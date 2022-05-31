@@ -1,4 +1,4 @@
-const Boton = ({ label, span }) => {
-    return <button className="btn btn-outline-light">{label}{span}</button>
+const Boton = ({ label, span, classButton }) => {
+    return <button className={classButton} >{label}{span}</button>
 }
 export default Boton;
