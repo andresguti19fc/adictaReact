@@ -1,6 +1,6 @@
-import Boton from "../boton/Boton";
+import { Link } from "react-router-dom";
 
-const Item = ({ nombre, imagen, precio }) => {
+const Item = ({ nombre, imagen, precio, id }) => {
   return (
     <div className="col-xl-3 col-md-4 my-5">
       <div className="card h-100">
@@ -8,7 +8,9 @@ const Item = ({ nombre, imagen, precio }) => {
         <div className="card-body">
           <h5 className="card-title">{nombre}</h5>
           <p className="card-text">{precio}</p>
-          <Boton classButton="btn btn-outline-dark" label="ver detalles" />
+          <footer>
+                <Link className="btn btn-outline-dark" to={`/detail/${id}`} >ver detalles</Link>
+             </footer>
         </div>
       </div>
     </div>

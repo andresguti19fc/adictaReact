@@ -1,9 +1,6 @@
 .App {
   text-align: center;
   background-color: #fff;
-  min-height: 100vh;
-  
-
 }
 
 .App-logo {
@@ -17,7 +14,11 @@
   }
 }
 
-.App-header {
+.minH{
+  min-height: 100vh;
+}
+
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -40,3 +41,4 @@
     transform: rotate(360deg);
   }
 }
+ */

@@ -1,12 +1,14 @@
 import React from "react";
-import Boton from "../boton/Boton";
 import CartWidget from "./CartWidget";
+import { Link } from "react-router-dom";
 
 const NavBar = function () {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <p className="navbar-brand">Adicta</p>
+        <Link className="navbar-brand" to="/">
+          <p className="navbar-brand">Adicta</p>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -24,16 +26,30 @@ const NavBar = function () {
         >
           <ul className="navbar-nav">
             <li className="nav-item active mx-3">
-              <Boton classButton="btn btn-outline-light" label="zapatos" />
+              <Link to="/categoria/zapatos" className="btn btn-outline-light">
+                zapatos
+              </Link>
             </li>
             <li className="nav-item mx-3">
-              <Boton classButton="btn btn-outline-light" label="camisas" />
+              <Link to="/categoria/camisas" className="btn btn-outline-light">
+                camisas
+              </Link>
             </li>
             <li className="nav-item mx-3">
-              <Boton classButton="btn btn-outline-light" label="pantalones" />
+              <Link
+                to="/categoria/pantalon"
+                className="btn btn-outline-light"
+              >
+                pantalones
+              </Link>
             </li>
             <li className="nav-item mx-3">
-              <Boton classButton="btn btn-outline-light" label="accesorios" />
+              <Link
+                to="/categoria/accesorios"
+                className="btn btn-outline-light"
+              >
+                accesorios
+              </Link>
             </li>
           </ul>
           <CartWidget />
