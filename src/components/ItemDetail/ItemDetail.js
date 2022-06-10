@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const ItemDetail = ({ id, nombre, imagen, categoria, descripcion, precio }) => {
   return (
@@ -18,7 +20,14 @@ const ItemDetail = ({ id, nombre, imagen, categoria, descripcion, precio }) => {
               <span className="card-title my-3 fs-1">
                 <b>{nombre}</b>
               </span>
-
+              {/* estrellas */}
+              <div className="d-flex flex-row justify-content-around">
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} />
+              </div>
               <h3 className="fs-1 my-3">
                 <b>Precio:</b> {precio}{" "}
                 <span className="spanCounter fs-2">$</span>
