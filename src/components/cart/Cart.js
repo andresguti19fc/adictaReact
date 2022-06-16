@@ -6,10 +6,6 @@ import "./cart.css";
 const Cart = () => {
   const { cart, eliminarTodo, comprarCart, eliminarCart } = useContext(CartContext);
 
-  const handleEliminarCart = (e) => {
-    e.preventDefault();
-    eliminarCart(e.target.id);
-  }
 
   const th = ["Imagen", "Producto", "Precio", "Cantidad", "SubTotal", "Eliminar"];
 
@@ -53,7 +49,7 @@ const Cart = () => {
                     <td>
                       <Boton
                         label="eliminar"
-                        onClick={handleEliminarCart}
+                        onClick={() => eliminarCart(item.id)}
                         classButton="btn btn-outline-danger"
                       />
                     </td>
