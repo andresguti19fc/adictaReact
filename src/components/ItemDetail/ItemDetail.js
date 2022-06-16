@@ -1,8 +1,22 @@
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import Counter from "../Counter/Counter"; 
+import Boton from "../boton/Boton";
+import { useContext, useState } from "react";
+import CartContext from "../../context/CartContext";
+import { Link } from "react-router-dom";
 
-const ItemDetail = ({ id, nombre, imagen, categoria, descripcion, precio }) => {
+const ItemDetail = ({ id, nombre, categoria, imagen, descripcion, precio }) => {
+
+  const [cantidadAgregada, setCantidadAgregada] = useState(0);
+
+  const {agregarCart} = useContext(CartContext);
+const cartOnAdd = (cantidad) => {
+    agregarCart({id, nombre, precio, cantidad, imagen});
+    setCantidadAgregada(cantidad);
+};
+
+
   return (
     <>
       <div className="card container text-center w-50">
@@ -20,21 +34,21 @@ const ItemDetail = ({ id, nombre, imagen, categoria, descripcion, precio }) => {
               <span className="card-title my-3 fs-1">
                 <b>{nombre}</b>
               </span>
-              {/* estrellas */}
-              <div className="d-flex flex-row justify-content-around">
-                <FontAwesomeIcon icon={faStar} />
-                <FontAwesomeIcon icon={faStar} />
-                <FontAwesomeIcon icon={faStar} />
-                <FontAwesomeIcon icon={faStar} />
+              <div className="d-flex flex-row justify-content-center">
+                <FontAwesomeIcon icon={faStar} className="text-warning" />
+                <FontAwesomeIcon icon={faStar} className="text-warning" />
+                <FontAwesomeIcon icon={faStar} className="text-warning" />
+                <FontAwesomeIcon icon={faStar} className="text-warning" />
                 <FontAwesomeIcon icon={faStar} />
               </div>
               <h3 className="fs-1 my-3">
                 <b>Precio:</b> {precio}{" "}
                 <span className="spanCounter fs-2">$</span>
               </h3>
-              <Link to={"/"} className="btn btn-outline-dark">
-                Agregar al carrito
-              </Link>
+              {  cantidadAgregada === 0 
+              ? <Counter onAdd={cartOnAdd} stock={25} initial={0} />
+              : <Link to='/cart'><Boton classButton='btn btn-outline-dark' label="terminar de comprar" /></Link>
+               }
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ const bbdd = [
       precio: 200,
       id: 2,
       cantidad: 0,
-      categoria: "pantalon",
+      categoria: "pantalones",
       descripcion: 'los jeans que necesitas para verte genial. Están diseñados con cintura alta, y elaborados con denim stretch que se amolda a la cadera y muslos realzando tu figura. Los fabricamos y construimos con stretch de cuatro vías que levanta, mantiene y realza tu figura todo el día, todos los días. Origen: Pakistan'
     },
     {
@@ -79,7 +79,7 @@ const bbdd = [
       precio: 300,
       id: 9,
       cantidad: 0,
-      categoria: "pantalon",
+      categoria: "pantalones",
       descripcion: 'Calza cintura cruzada Ailyke •Adecuada para todo tipo de actividad física y uso casual. •De secado rápido y protección UV.  •Costuras reforzadas. •Ideal para toda época del año  •Son suaves y cómodas.'
     },
     {
@@ -97,7 +97,7 @@ const bbdd = [
       precio: 200,
       id: 11,
       cantidad: 0,
-      categoria: "pantalon",
+      categoria: "pantalones",
       descripcion: 'los jeans que necesitas para verte genial. Están diseñados con cintura alta, y elaborados con denim stretch que se amolda a la cadera y muslos realzando tu figura. Los fabricamos y construimos con stretch de cuatro vías que levanta, mantiene y realza tu figura todo el día, todos los días. Origen: Pakistan'
     },
     {

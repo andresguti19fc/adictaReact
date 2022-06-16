@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+/* import {useContext} from 'react';
+import {Context} from '../../App'; */
 
 const Item = ({ nombre, imagen, precio, id }) => {
+
+  
   return (
     <div className="col-xl-3 col-md-4 my-5">
       <div className="card h-100">

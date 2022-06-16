@@ -6,13 +6,6 @@ import Spiner from '../../components/Spiner/Spiner';
 
 const ItemDetailContainer = () => {
 
-    let num = 5;
-    let minimo = 10;
-    let maximo = 20;
-    if(num > minimo && num < maximo) {
-        console.log('numero entre');
-    }
-
     const [cargando, setCargando] = useState(true);
 
     const [prod, setProd] = useState();
@@ -31,7 +24,6 @@ const ItemDetailContainer = () => {
             setCargando(false)
         });
     }, [itemId]);
-    console.log(prod);
     if(cargando){
         return <Spiner />
       }else{

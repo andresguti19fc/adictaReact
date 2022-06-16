@@ -2,9 +2,9 @@
 import './footer.css';
 const Footer = () => {
   return (
-    <footer class="py-5 bg-dark fixed-bottom">
-      <div class="container">
-        <p class="m-0 text-center text-white">
+    <footer className="py-5 bg-dark fixed-bottom">
+      <div className="container">
+        <p className="m-0 text-center text-white">
           Copyright &copy; AdictaSomos 2022.
         </p>
       </div>
