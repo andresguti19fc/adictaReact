@@ -1,8 +1,6 @@
-// Counter value
 import { useState } from 'react';
 import Boton from '../boton/Boton';
 import '../navbar/CartWidget.css';
-
 
 const Counter = ({onAdd, stock = 25, initial = 0}) => {
 
@@ -21,7 +19,7 @@ const Counter = ({onAdd, stock = 25, initial = 0}) => {
 }         
 
     const onadd = () => onAdd(count);
-
+    
     return (
         <div>
             <Boton classButton='btn btn-outline-secondary' onClick={decrement} label='-' />

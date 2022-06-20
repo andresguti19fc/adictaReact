@@ -1,4 +1,3 @@
-// spiner
 
 const Spiner = () => {
   return (

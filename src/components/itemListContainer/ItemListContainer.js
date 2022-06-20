@@ -48,7 +48,7 @@ const [cargando, setCargando] = useState(true);
   return (
     <div className="container text-center minHeight">
       <div className="row App">
-        <h1>{title}</h1>
+        <h1 className="my-3">{title}</h1>
       </div>
       <ItemList items={items} />
     </div>

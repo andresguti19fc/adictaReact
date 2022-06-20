@@ -16,7 +16,6 @@ const cartOnAdd = (cantidad) => {
     setCantidadAgregada(cantidad);
 };
 
-
   return (
     <>
       <div className="card container text-center w-50">
