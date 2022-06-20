@@ -7,3 +7,8 @@
     
     padding-bottom: 100px;
 }
+.centerText{
+    height: 100%;
+    display: grid;
+    place-items: center;
+}

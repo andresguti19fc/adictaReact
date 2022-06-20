@@ -1,5 +1,5 @@
 import './App.css';
-import React, { createContext } from 'react';
+import React, { createContext, Suspense } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/navbar/NavBar.js';
 import Footer from './components/Footer/Footer';  
@@ -8,7 +8,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './components/ItemDetailContainer/ItemDetailContainer.css';
 import { CartProvider } from './context/CartContext';
-import Cart from './components/cart/Cart.js';
+import CartContainer from './components/cart/Cart.js';
 
  export const Context = createContext();
 
@@ -18,12 +18,14 @@ function App() {
     <CartProvider >
       <BrowserRouter>
       <NavBar />
+      <Suspense fallback={<div>Loading...</div>}>
         <Routes>        
           <Route path="/" element={<ItemListContainer title="Tienda Adicta" />} />
           <Route path="/categoria/:categoriaId" element={<ItemListContainer title="Tienda Adicta" />} />
           <Route path="/detail/:itemId" element={<ItemDetailContainer />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/cart' element={<CartContainer title="Tienda Adicta" />} />
         </Routes>
+      </Suspense>
         <Footer />
     </BrowserRouter>
     </CartProvider>

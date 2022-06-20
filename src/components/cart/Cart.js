@@ -2,13 +2,25 @@ import { useContext } from "react";
 import CartContext from "../../context/CartContext.js";
 import Boton from "../../components/boton/Boton.js";
 import "./cart.css";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cart, eliminarTodo, comprarCart, eliminarCart } = useContext(CartContext);
 
 
   const th = ["Imagen", "Producto", "Precio", "Cantidad", "SubTotal", "Eliminar"];
-
+if(cart.length === 0){
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-12 text-center">
+          <h1 className="">No hay productos en el carrito</h1>
+         <Link to="/"><Boton classButton='btn btn-dark' label="Volver" /></Link> 
+        </div>
+      </div>
+    </div>
+  );
+}
   return (
     <>
       <div className="cart container text-center minHeight">

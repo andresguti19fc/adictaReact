@@ -11,7 +11,7 @@ const Item = ({ nombre, imagen, precio, id }) => {
         <img className="card-img-top img-fluid" src={imagen} alt={nombre} />
         <div className="card-body">
           <h5 className="card-title">{nombre}</h5>
-          <p className="card-text">{precio}</p>
+          <p className="card-text">{precio} $</p>
           <footer>
                 <Link className="btn btn-outline-dark" to={`/detail/${id}`} >ver detalles</Link>
              </footer>

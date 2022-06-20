@@ -11,7 +11,7 @@ const CartWidget = () => {
     const { totalCantidad } = useContext(CartContext);
 
     return (
-        <Link to="cart" className='btn btn-outline-light' >
+        <Link to="cart" className={totalCantidad !== 0 ? 'btn btn-outline-light visible' : 'invisible' } >
             <FontAwesomeIcon icon={faCartShopping} />
         <span className="spanCounter"> { totalCantidad } </span>
         </Link>

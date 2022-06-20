@@ -1,7 +1,7 @@
 
 
 const bbdd = [
-    {
+   /*  {
       imagen: "/images/camisa.jpg",
       nombre: "camisa",
       precio: 100,
@@ -27,7 +27,7 @@ const bbdd = [
       cantidad: 0,
       categoria: "zapatos",
       descripcion: '-Artículo 1101. -Zapato Stiletto clásico liso con taco medio.-Material de capellada sintético. -Numeración del 35 al 41. -Plantilla confort super cómoda de gran calce.      -Disponible en color Negro y Beige.      -Base de goma.      -Taco de 10 cm de altura.      -Plataforma de 0,5 cm.      -Referencia de medidas de los talles en la publicación, donde figura guía de talles, o también foto ilustrativa en la galería de fotos del producto.'
-    },
+    } ,
     {
       imagen: "/images/body.jpg",
       nombre: "bodys",
@@ -108,10 +108,40 @@ const bbdd = [
       cantidad: 0,
       categoria: "accesorios",
       descripcion: 'ÚNICO COMPLETAMENTE DE ACERO QUIRÚRGICO Especialmente diseñado para personas alérgicas, acero 316L de primera calidad importando. No pierde color con nada!'
-    }
+    }*/
   ]
+  /*  setCargando(true);
+           getItemById(itemId).then((resolve) => {            
+            setProd(resolve);            
+        }).catch(error => {
+            console.log(error); 
+        }
+        ).finally(() => {
+            console.log('finally');
+            setCargando(false)
+        }); 
+    }, [itemId]);*/
+    
 
-export const getBbdd = () => {
+    /* if(!categoriaId)  {
+    getBbdd().then((resolve) => {
+      setItems(resolve);
+    }).catch((error) => {
+      console.log(error);
+    }).finally(() => {
+      setCargando(false);
+    });
+  } else {
+    getBbddByCategoria(categoriaId).then((resolve) => {
+      setItems(resolve);
+    }).catch((error) => {
+      console.log(error);
+    }).finally(() => {
+      setCargando(false);
+    });
+  } */
+
+/* export const getBbdd = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(bbdd);
@@ -134,4 +164,4 @@ export const getBbddByCategoria = (categoriaId) => {
     }, 1000);
   });
 }
-
+ */

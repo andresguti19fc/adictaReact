@@ -1,10 +1,10 @@
 import React from "react";
 import ItemList from "../itemList/ItemList.js";
 import Spiner from "../Spiner/Spiner.js";
-import { getBbdd } from "../../mock/asyncMock";
-import { getBbddByCategoria } from "../../mock/asyncMock";
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import { getDocs, query, collection, where } from 'firebase/firestore';
+import {db} from "../../services/firebase/index";
 
 const ItemListContainer = function ({ title }) {
   const [items, setItems] = useState([]);
@@ -15,24 +15,30 @@ const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
     setCargando(true);
-    if(!categoriaId)  {
-    getBbdd().then((resolve) => {
-      setItems(resolve);
-    }).catch((error) => {
-      console.log(error);
-    }).finally(() => {
+
+    const coleccion = categoriaId ? (
+      query(collection(db, 'bbdd'), where('categoria', '==', categoriaId))) 
+      : (collection(db, 'bbdd')
+      ); 
+
+    getDocs(coleccion).then(res => {
+      const bbddFormateado = res.docs.map(doc => {
+        return {
+          id: doc.id, ...doc.data()
+        };
+      });
+      setItems(bbddFormateado);
+    }).catch(err => {
+      console.log(err);
+    }
+    ).finally(() => {
       setCargando(false);
-    });
-  } else {
-    getBbddByCategoria(categoriaId).then((resolve) => {
-      setItems(resolve);
-    }).catch((error) => {
-      console.log(error);
-    }).finally(() => {
-      setCargando(false);
-    });
-  }
+    }
+    )
   }, [categoriaId]);
+
+
+
   if(cargando){
     return <Spiner />
   }else{

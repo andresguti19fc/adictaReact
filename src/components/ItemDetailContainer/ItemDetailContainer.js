@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { getItemById } from '../../mock/asyncMock';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
 import Spiner from '../../components/Spiner/Spiner';
+import { getDoc, doc } from 'firebase/firestore';
+import { db } from '../../services/firebase/index';
 
 const ItemDetailContainer = () => {
 
@@ -13,17 +14,21 @@ const ItemDetailContainer = () => {
     const {itemId} = useParams();
         
     useEffect(() => {
-        setCargando(true);
-           getItemById(itemId).then((resolve) => {            
-            setProd(resolve);            
-        }).catch(error => {
-            console.log(error); 
+
+        const documento = doc(db, 'bbdd', itemId);
+
+        getDoc(documento).then(doc => {
+            const documentoFormateado = {id: doc.id, ...doc.data()}
+                setProd(documentoFormateado);
+        }).catch(err => {
+            console.log(err);
         }
         ).finally(() => {
-            console.log('finally');
-            setCargando(false)
-        });
+            setCargando(false);
+        })                  
     }, [itemId]);
+
+       
     if(cargando){
         return <Spiner />
       }else{

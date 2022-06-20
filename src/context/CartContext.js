@@ -41,17 +41,10 @@ export const CartProvider = ({ children }) => {
     const eliminarTodo = () => {
         setCart([]);
     }
-    const comprarCart = () => {
-        swal("Gracias por su compra", "ok", "success");
+    const comprarCart = () => {        
         setCart([]);
+        swal("Gracias por su compra", "ok", "success");
     }
-
-
-
-   
-    /* const tomarCart = () => {
-             return cart.reduce((acc, item) => acc + item.candtidad, 0);
-    } */
     return (
         <CartContext.Provider value={{ 
             cart,
