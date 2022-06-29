@@ -37,7 +37,7 @@ const ItemDetailContainer = () => {
     return (
         <div className="minHeight">
 
-        <h2 className="text-center my-5">detallar los productos</h2>
+        <h2 className="text-center my-5">detalles Adicta</h2>
         <ItemDetail {...prod} />
         </div>    
     )

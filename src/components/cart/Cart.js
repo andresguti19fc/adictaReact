@@ -1,101 +1,88 @@
 import { useContext } from "react";
-import CartContext from "../../context/CartContext.js";
+import CartContext from '../../context/CartContext'
 import Boton from "../../components/boton/Boton.js";
 import "./cart.css";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const Cart = () => {
-  const { cart, eliminarTodo, comprarCart, eliminarCart } = useContext(CartContext);
+  const { cart, eliminarTodo, eliminarCart } =
+    useContext(CartContext);
+/* 
+const handleCrearOrden = () => {
+      const objOrder = {
+        cliente:{
+          nombre: '',
+          email: '',
+          telefono: '',
+        },
+        items: cart,
+        total: totalCantidad
+
+        }
+
+        const order = collection(db, 'orders');
+        addDoc(order, objOrder).then(({id}) => {
+          console.log(id)
+        } );
 
 
-  const th = ["Imagen", "Producto", "Precio", "Cantidad", "SubTotal", "Eliminar"];
-if(cart.length === 0){
-  return (
-    <div className="container">
-      <div className="row">
-        <div className="col-12 text-center">
-          <h1 className="">No hay productos en el carrito</h1>
-         <Link to="/"><Boton classButton='btn btn-dark' label="Volver" /></Link> 
-        </div>
-      </div>
-    </div>
-  );
-}
+      }
+
+      /* const handleUpdateStock = () => {
+        const docRef = doc(db, 'products', cart[0].id);
+      } */
   return (
     <>
-      <div className="cart container text-center minHeight">
-        <div className="cart-header row">
-          <div className="col-md-12">
-            <h3 className="text-center fs-1 fw-bold my-5">
-              Carrito de compras
-            </h3>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-12">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  {th.map((t) => (
-                    <th key={t} className="text-center">
-                        {t}
-                    </th>
-                    ))}
-                </tr>
-              </thead>
-              <tbody>
-                {cart.map((item) => (
-                  <tr key={item.id} className="fs-3 fw-bold">
-                    <td>
-                      <img
-                        className="rounded-circle alturaImagen"
-                        src={item.imagen}
-                        alt={item.nombre}
-                      />
-                    </td>
-                    <td>{item.nombre}</td>
-                    <td>{item.precio} $</td>
-                    <td>{item.cantidad}</td>
-                    <td>{item.precio * item.cantidad} $</td>
-                    <td>
-                      <Boton
-                        label="eliminar"
-                        onClick={() => eliminarCart(item.id)}
-                        classButton="btn btn-outline-danger"
-                      />
-                    </td>
-                  </tr>
-                ))}
-                <tr className="fs-3 fw-bold">
-                  <td colSpan="5">Total</td>
-                  <td>
-                    {cart.reduce(
-                      (total, item) => total + item.precio * item.cantidad,
-                      0
-                    )}{" "}
-                    $
-                  </td>
-                </tr>
-                <tr className="fs-3 fw-bold">
-                  <td colSpan="5">
-                    <Boton
-                      label="comprar"
-                      classButton="btn btn-outline-success" onClick={comprarCart} />
-                  </td>
-                  <td>
-                    <Boton
-                      label="vaciar carrito"
-                      onClick={eliminarTodo}
-                      classButton="btn btn-outline-warning"
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      <tbody>
+        {cart.map((item) => (
+          <tr key={item.id} className="fs-3 fw-bold">
+            <td>
+              <img
+                className="rounded-circle alturaImagen"
+                src={item.imagen}
+                alt={item.nombre}
+              />
+            </td>
+            <td>{item.nombre}</td>
+            <td>{item.precio} $</td>
+            <td>{item.cantidad}</td>
+            <td>{item.precio * item.cantidad} $</td>
+            <td>
+              <Boton
+                label="eliminar"
+                onClick={() => eliminarCart(item.id)}
+                classButton="btn btn-outline-danger"
+              />
+            </td>
+          </tr>
+        ))}
+        <tr className="fs-3 fw-bold">
+          <td colSpan="5">Total</td>
+          <td>
+            {cart.reduce(
+              (total, item) => total + item.precio * item.cantidad,
+              0
+            )}{" "}
+            $
+          </td>
+        </tr>
+        <tr className="fs-3 fw-bold">
+          <td colSpan="5">
+<Link to="/checkout" ><Boton
+              label="generar la orden"
+              classButton="btn btn-outline-success"
+              
+            /></Link>
+          </td>
+          <td>
+            <Boton
+              label="vaciar carrito"
+              onClick={eliminarTodo}
+              classButton="btn btn-outline-warning"
+            />
+          </td>
+        </tr>
+      </tbody>
     </>
   );
 };

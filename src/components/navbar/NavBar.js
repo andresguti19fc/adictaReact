@@ -1,10 +1,17 @@
 import React from "react";
+import {Login} from "../../auth/Login";
+import {Logout} from "../../auth/Logout";
+import { Perfil } from "../../auth/Perfil";
+import {useAuth0} from "@auth0/auth0-react";
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const NavBar = function () {
 
   let arrayCategory = ['zapatos', 'camisas', 'pantalones', 'accesorios'];
+
+  const {isAuthenticated} = useAuth0();
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -27,6 +34,12 @@ const NavBar = function () {
           </ul>
         
           <CartWidget />
+          {isAuthenticated 
+          ? <>
+            <Logout />
+            <Perfil />
+          </>
+          : <Login />}
         </div>
       </div>
     </nav>
