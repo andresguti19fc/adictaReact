@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Item = ({ nombre, imagen, precio, id }) => {
+const Item = ({ nombre, imagen, precio, id, stock }) => {
   
   return (
     <div className="col-xl-3 col-md-4 my-5">

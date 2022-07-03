@@ -4,12 +4,13 @@ import "../ItemDetailContainer/ItemDetailContainer.css";
 import "../cart/cart.css";
 import { useContext, useState } from "react";
 import Boton from "../../components/boton/Boton";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, doc, collection, updateDoc, Timestamp, getDoc } from "firebase/firestore";
 import { db } from "../../services/firebase/index";
 import swal from "sweetalert";
+import AgregarProducto from "../../components/agregarProducto/AgregarProducto";
 
 const Checkout = () => {
-  const { cart, totalCantidad } = useContext(CartContext);
+  const { cart, totalCantidad, comprarCart } = useContext(CartContext);
   const [usuario, setUsuario] = useState("");
   const objOrder = {
     cliente: {
@@ -17,7 +18,7 @@ const Checkout = () => {
       direccion: usuario.direccion,
       email: usuario.email,
       telefono: usuario.telefono,
-      fecha: new Date(),
+      fecha: Timestamp.fromDate(new Date()),
     },
     items: cart,
     total: totalCantidad,
@@ -30,7 +31,6 @@ const Checkout = () => {
 
   const guardarDatos = (e) => {
     e.preventDefault();
-    console.log(usuario);
     setUsuario({ ...objOrder });
 
     swal({
@@ -48,16 +48,22 @@ const Checkout = () => {
         addDoc(order, objOrder)
           .then(({ id }) => {
             console.log(id);
+
+            cart.forEach((item) => {
+              const docRef = doc(db, "bbdd", item.id);
+              getDoc(docRef).then((doc) => {
+                updateDoc(docRef, {stock: doc.data().stock - item.cantidad});
+
+              });
+            })
+
+            e.target.reset();
+            comprarCart();
           })
-          .catch((err) => {
-            console.log(err);
-          });
       } else {
         swal("¡Tu compra se canceló!");
       }
     });
-
-    e.target.reset();
   };
 
   return (
@@ -119,13 +125,14 @@ const Checkout = () => {
                         classButton="btn btn-outline-primary mx-3"
                       />
                     </Link>
-                    <button className="btn btn-outline-dark">enviar</button>
+                    <button className="btn btn-outline-dark">
+                      Finalizar compra
+                    </button>
                   </div>
                 </div>
                 <div className="col-6 col-md-6">
                   <ul className="list-group">
                     <label>Productos</label>
-
                     {cart.map((item, index) => (
                       <li key={item.id} className="list-group-item">
                         <div className="row">
@@ -141,7 +148,7 @@ const Checkout = () => {
                             <p>{item.cantidad}</p>
                           </div>
                           <div className="col-md-2">
-                            <p>{item.precio} $</p>
+                            <p>{item.precio * item.cantidad} $</p>
                           </div>
                         </div>
                       </li>
@@ -154,6 +161,7 @@ const Checkout = () => {
           <hr />
         </div>
       </div>
+      <AgregarProducto />
     </div>
   );
 };

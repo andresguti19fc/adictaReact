@@ -32,14 +32,13 @@ const NavBar = function () {
               </li>
             ))}
           </ul>
-        
-          <CartWidget />
           {isAuthenticated 
           ? <>
             <Logout />
             <Perfil />
           </>
           : <Login />}
+          <CartWidget />
         </div>
       </div>
     </nav>

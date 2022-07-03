@@ -6,7 +6,6 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState([]);
-    
 
     const [totalCantidad, setTotalCantidad] = useState(0);
 
@@ -43,8 +42,10 @@ export const CartProvider = ({ children }) => {
     }
     const comprarCart = () => {        
         setCart([]);
-        swal("Gracias por su compra", "ok", "success");
+        swal("Gracias por su compra", "success");
     }
+
+    
     return (
         <CartContext.Provider value={{ 
             cart,

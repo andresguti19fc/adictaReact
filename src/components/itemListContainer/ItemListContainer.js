@@ -21,7 +21,7 @@ const [cargando, setCargando] = useState(true);
       query(collection(db, 'bbdd'), where('categoria', '==', categoriaId))) 
       : (collection(db, 'bbdd')
       ); 
-
+      
     getDocs(coleccion).then(res => {
       const bbddFormateado = res.docs.map(doc => {
         return {
@@ -37,8 +37,6 @@ const [cargando, setCargando] = useState(true);
     }
     )
   }, [categoriaId]);
-
-
 
   if(cargando){
     return <Spiner />

@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/navbar/NavBar.js';
 import Footer from './components/Footer/Footer'; 
 import Checkout from './components/check/Checkout'; 
+import AgregarProducto from './components/agregarProducto/AgregarProducto';
 import ItemListContainer from './components/itemListContainer/ItemListContainer.js';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -27,6 +28,7 @@ function App() {
           <Route path="/detail/:itemId" element={<ItemDetailContainer />} />
           <Route path='/cart' element={<CartContainer title="Tienda Adicta" />} />
           <Route path='/checkout' element={<Checkout />} />
+          <Route path='/agregarProducto' element={<AgregarProducto />} />
         </Routes>
       </Suspense>
         <Footer />
