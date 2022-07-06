@@ -28,7 +28,6 @@ const ItemDetailContainer = () => {
         })                  
     }, [itemId]);
 
-       console.log(prod)
     if(cargando){
         return <Spiner />
       }else{

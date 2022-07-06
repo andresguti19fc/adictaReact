@@ -52,8 +52,7 @@ const [cargando, setCargando] = useState(true);
       <ItemList items={items} />
       <div className="row gap-5 justify-content-center my-5 pb-4">
         <Card />
-      </div>
-      
+      </div>      
     </div>
   );
 };

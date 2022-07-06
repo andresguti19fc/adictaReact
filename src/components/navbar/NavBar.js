@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const NavBar = function () {
 
-  let arrayCategory = ['zapatos', 'camisas', 'pantalones', 'accesorios'];
+  let arrayCategory = ['zapatos', 'camisas', 'pantalones', 'accesorios', 'otros'];
 
   const {isAuthenticated} = useAuth0();
 

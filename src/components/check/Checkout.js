@@ -4,7 +4,7 @@ import "../ItemDetailContainer/ItemDetailContainer.css";
 import "../cart/cart.css";
 import { useContext, useState } from "react";
 import Boton from "../../components/boton/Boton";
-import { addDoc, doc, collection, updateDoc, Timestamp, getDoc } from "firebase/firestore";
+import { addDoc, documentId, collection, Timestamp, getDocs, query, where, writeBatch } from "firebase/firestore";
 import { db } from "../../services/firebase/index";
 import swal from "sweetalert";
 import AgregarProducto from "../../components/agregarProducto/AgregarProducto";
@@ -29,42 +29,43 @@ const Checkout = () => {
     setUsuario({ ...usuario, [name]: value });
   };
 
-  const guardarDatos = (e) => {
+  const guardarDatos = async (e) => {
     e.preventDefault();
     setUsuario({ ...objOrder });
 
-    swal({
-      title: "¿Estas seguro?",
-      text: "¡Tu compra se realizara!",
-      icon: "info",
-      buttons: true,
-      dangerMode: false,
-    }).then((willDelete) => {
-      if (willDelete) {
-        swal("¡Tu compra se realizó con éxito!", {
-          icon: "success",
-        });
+    
         const order = collection(db, "orders");
-        addDoc(order, objOrder)
-          .then(({ id }) => {
-            console.log(id);
-
-            cart.forEach((item) => {
-              const docRef = doc(db, "bbdd", item.id);
-              getDoc(docRef).then((doc) => {
-                updateDoc(docRef, {stock: doc.data().stock - item.cantidad});
-
-              });
+        
+            
+            const batch = writeBatch(db);
+            const productosRef = collection(db, "bbdd");
+            const q = query(productosRef, where(documentId(), 'in', cart.map((item) => item.id)));
+            const productos = await getDocs(q);
+            const sinStock = [];
+            productos.docs.forEach((doc) => {
+              const item = cart.find((el) => el.id === doc.id);
+              if (doc.data().stock >= item.cantidad) {
+                batch.update(doc.ref, {
+                  stock: doc.data().stock - item.cantidad,
+                });
+              } else {
+                sinStock.push(item);
+              }
             })
+            if(sinStock.length === 0) {
+              addDoc(order, objOrder).then(() => {
 
-            e.target.reset();
+              batch.commit()
+              e.target.reset();
             comprarCart();
-          })
-      } else {
-        swal("¡Tu compra se canceló!");
-      }
-    });
-  };
+              
+              swal("Compra realizada", "", "success");
+            })
+            } else {
+              swal("¡Algo salio mal!", `No se pudo realizar la compra de los siguientes productos: ${sinStock.map((item) => item.nombre).join(", ")}`, "error");
+            }
+     
+  }
 
   return (
     <div className="container minHeight my-5">
@@ -137,7 +138,6 @@ const Checkout = () => {
                       <li key={item.id} className="list-group-item">
                         <div className="row">
                           <div className="col-md-2">
-                            {/* <img className="rounded-circle alturaImagen" src={item.imagen} alt={item.nombre} /> */}
                             <span>{index + 1}</span>
                           </div>
                           <div className="col-md-6">
@@ -166,3 +166,11 @@ const Checkout = () => {
   );
 };
 export default Checkout;
+
+/* cart.forEach((item) => {
+  const docRef = doc(db, "bbdd", item.id);
+  getDoc(docRef).then((doc) => {
+    updateDoc(docRef, {stock: doc.data().stock - item.cantidad});
+
+  });
+}) */

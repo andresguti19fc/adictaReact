@@ -42,7 +42,6 @@ export const CartProvider = ({ children }) => {
     }
     const comprarCart = () => {        
         setCart([]);
-        swal("Gracias por su compra", "success");
     }
 
     

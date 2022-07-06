@@ -44,7 +44,7 @@ const AgregarProducto = () => {
         </div>
         <div className="form-floating mt-4">
   <textarea className="form-control" placeholder="descripcion" id="floatingTextarea2"></textarea>
-  <label for="floatingTextarea2">Comments</label>
+  <label htmlFor="floatingTextarea2">Comments</label>
 </div>
         <div className="form-group">
         <label>Imagen</label>
