@@ -5,32 +5,8 @@ import "./cart.css";
 import {Link} from "react-router-dom";
 
 const Cart = () => {
-  const { cart, eliminarTodo, eliminarCart } =
-    useContext(CartContext);
-/* 
-const handleCrearOrden = () => {
-      const objOrder = {
-        cliente:{
-          nombre: '',
-          email: '',
-          telefono: '',
-        },
-        items: cart,
-        total: totalCantidad
+  const { cart, eliminarTodo, eliminarCart } = useContext(CartContext);
 
-        }
-
-        const order = collection(db, 'orders');
-        addDoc(order, objOrder).then(({id}) => {
-          console.log(id)
-        } );
-
-
-      }
-
-      /* const handleUpdateStock = () => {
-        const docRef = doc(db, 'products', cart[0].id);
-      } */
   return (
     <>
       <tbody>
@@ -68,11 +44,12 @@ const handleCrearOrden = () => {
         </tr>
         <tr className="fs-3 fw-bold">
           <td colSpan="5">
-<Link to="/checkout" ><Boton
-              label="generar la orden"
-              classButton="btn btn-outline-success"
-              
-            /></Link>
+            <Link to="/checkout">
+              <Boton
+                label="generar la orden"
+                classButton="btn btn-outline-success"
+              />
+            </Link>
           </td>
           <td>
             <Boton

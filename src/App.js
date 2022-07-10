@@ -12,7 +12,6 @@ import './components/ItemDetailContainer/ItemDetailContainer.css';
 import { CartProvider } from './context/CartContext';
 import CartContainer from './components/cartContainer/CartContainer.js';
 
-
  export const Context = createContext();
 
 function App() {
