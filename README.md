@@ -76,7 +76,7 @@ function App() {
 ## video de ejemplo en esta ruta:
 
 ```
-./public/images/gif/videogif.gif
+https://ibb.co/3Cxh9Vk
 
 ```
 
