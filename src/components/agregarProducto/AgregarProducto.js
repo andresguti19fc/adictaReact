@@ -14,7 +14,6 @@ const AgregarProducto = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const productoBbdd = {
       nombre: producto.nombre,
       precio: producto.precio,
@@ -27,12 +26,10 @@ const AgregarProducto = () => {
       console.log(id);
     }).catch((error) => {
       console.log(error);
-    });    
-    
+    });       
     e.target.reset();
     swal("Listo", `${producto.nombre}, agregado correctamente`, "success");
   }
-
 
   return (
     <div className="container border my-4 p-5 bg-light">
