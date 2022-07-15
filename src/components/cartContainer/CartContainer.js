@@ -10,9 +10,7 @@ const CartContainer = () => {
     if (totalCantidad === 0) {
         return <CartVacio />;
     }
-    return <CartList />;
-
-    
+    return <CartList />;    
 }
 
 export default CartContainer;
