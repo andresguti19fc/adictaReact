@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="py-4 bg-dark fixed-bottom">
       <div className="container">
         <p className="m-0 text-center text-white">
-          Copyright &copy; AdictaSomos 2022. All rights reserved
+          Copyright &copy; AdictaSomos 2022. Todos los derechos reservados.
         </p>
       </div>
     </footer>
